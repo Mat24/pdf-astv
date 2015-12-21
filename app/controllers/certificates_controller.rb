@@ -12,6 +12,11 @@ class CertificatesController < ApplicationController
   def show
   end
 
+  # GET /certificates/:id
+  def generate_pdf
+
+  end
+
   # GET /certificates/new
   def new
     @certificate = Certificate.new
