@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Certificates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Cedula</th>
+      <th>Pagaduria</th>
+      <th>No libranza</th>
+      <th>Saldo letras</th>
+      <th>Saldo numeros</th>
+      <th>Cuota letras</th>
+      <th>Cuota numeros</th>
+      <th>Fecha vencimiento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @certificates.each do |certificate| %>
+      <tr>
+        <td><%= certificate.nombre %></td>
+        <td><%= certificate.cedula %></td>
+        <td><%= certificate.pagaduria %></td>
+        <td><%= certificate.no_libranza %></td>
+        <td><%= certificate.saldo_letras %></td>
+        <td><%= certificate.saldo_numeros %></td>
+        <td><%= certificate.cuota_letras %></td>
+        <td><%= certificate.cuota_numeros %></td>
+        <td><%= certificate.fecha_vencimiento %></td>
+        <td><%= link_to 'Show', certificate %></td>
+        <td><%= link_to 'Edit', edit_certificate_path(certificate) %></td>
+        <td><%= link_to 'Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Certificate', new_certificate_path %>

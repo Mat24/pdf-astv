@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :certificates
   get 'home/index'
 
   get 'home/create'

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  cedula: 1
+  pagaduria: MyString
+  no_libranza: 1
+  saldo_letras: MyString
+  saldo_numeros: 1
+  cuota_letras: MyString
+  cuota_numeros: 1
+  fecha_vencimiento: 2015-12-20
+
+two:
+  nombre: MyString
+  cedula: 1
+  pagaduria: MyString
+  no_libranza: 1
+  saldo_letras: MyString
+  saldo_numeros: 1
+  cuota_letras: MyString
+  cuota_numeros: 1
+  fecha_vencimiento: 2015-12-20
