@@ -1,14 +1,16 @@
+
 class FactoryPDF < Prawn::Document
+  include ActionView::Helpers::NumberHelper
   attr_accessor :person
   attr_accessor :time
   def initialize(certificate_data)
     super()
     @person = certificate_data
     @time = Time.now
-    stroke_axis
+    # stroke_axis
     bounding_box([20, 730], :width => 490, :height => 730) do
       titulo
-      stroke_axis
+      # stroke_axis
       move_down 200
       encabezado
       barcode
@@ -23,7 +25,7 @@ class FactoryPDF < Prawn::Document
 
   def encabezado
     bounding_box([0, 550], :width => 490, :height => 250) do
-           text("As Televisión As Medios Ltda,NIT 860.509.357-0, certifica que el ( la ) Señor (a) #{@person.nombre}, identificado (a) con cédula de ciudadanía No. #{@person.cedula} perteneciente a la pagaduría #{@person.pagaduria}; tiene un crédito con esta entidad mediante la libranza No.#{@person.no_libranza} con un saldo de #{@person.saldo_letras} M/CTE. ($ #{@person.saldo_numeros}). El valor de la cuota pactada es de #{@person.cuota_letras} M/CTE. ($ #{@person.cuota_numeros}).Se toma en cuenta como último descuento a favor de la Cooperativa la cuota del mes de ___________________.,", :align => :justify, size: 10)
+           text("As Televisión As Medios Ltda,NIT 860.509.357-0, certifica que el ( la ) Señor (a) #{@person.nombre.upcase}, identificado (a) con cédula de ciudadanía No. #{number_with_delimiter(@person.cedula)} perteneciente a la pagaduría #{@person.pagaduria.upcase}; tiene un crédito con esta entidad mediante la libranza No.#{@person.no_libranza} con un saldo de #{@person.saldo_letras} M/CTE. ( #{convert_num(@person.saldo_numeros)} ). El valor de la cuota pactada es de #{@person.cuota_letras} M/CTE. ( #{convert_num(@person.cuota_numeros)} ).Se toma en cuenta como último descuento a favor de la Cooperativa la cuota del mes de ___________________.", :align => :justify, size: 10)
            pad_top(30) do
              text("Esta certificación tiene vigencia hasta el #{@person.fecha_vencimiento} del mes de Enero de 2016.", :align => :justify, size: 10)
            end
@@ -45,7 +47,7 @@ class FactoryPDF < Prawn::Document
     code = BarcodeGenerator.new(params)
     _barcode = code.make_code
     bounding_box([80, 380], :width => 350, :height => 50) do
-      stroke_axis
+      # stroke_axis
       _barcode.annotate_pdf(self)
     end
     bounding_box([90, 320], :width => 315, :height => 11) do
@@ -82,6 +84,10 @@ class FactoryPDF < Prawn::Document
 private
   def numero_mes(numero_mes)
     ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"][numero_mes-1]
+  end
+
+  def convert_num(num)
+    number_to_currency(num, precision: 0)
   end
 end
 # "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
