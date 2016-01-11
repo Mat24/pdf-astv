@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :certificates
-  get 'home/index'
+
+  root 'certificates#index'
+
+  get 'certificates/:id/report' => 'certificates#generate_pdf', as: 'pdf_report'
+
+  get'home/index'
 
   get 'home/create'
 

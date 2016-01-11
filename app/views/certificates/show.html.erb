@@ -45,5 +45,6 @@
   <%= @certificate.fecha_vencimiento %>
 </p>
 
+<%= link_to 'PDF', pdf_report_path(@certificate)%>
 <%= link_to 'Edit', edit_certificate_path(@certificate) %> |
 <%= link_to 'Back', certificates_path %>

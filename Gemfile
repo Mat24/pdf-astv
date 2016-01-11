@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Barcode Generator
+gem 'barby'
 # PDF render gem
 gem 'prawn'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

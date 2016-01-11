@@ -1,5 +1,5 @@
 class CertificatesController < ApplicationController
-  before_action :set_certificate, only: [:show, :edit, :update, :destroy]
+  before_action :set_certificate, only: [:show, :edit, :update, :destroy,:generate_pdf]
 
   # GET /certificates
   # GET /certificates.json
@@ -14,7 +14,11 @@ class CertificatesController < ApplicationController
 
   # GET /certificates/:id
   def generate_pdf
-
+    puts "------------------------------------"
+    puts @certificate.inspect
+    puts "------------------------------------"
+    pdf = FactoryPDF.new(@certificate)
+    send_data pdf.render, filename: 'certificate.pdf', type: 'application/pdf'
   end
 
   # GET /certificates/new
