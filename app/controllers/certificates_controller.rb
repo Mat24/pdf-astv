@@ -18,7 +18,7 @@ class CertificatesController < ApplicationController
     puts @certificate.inspect
     puts "------------------------------------"
     pdf = FactoryPDF.new(@certificate)
-    send_data pdf.render, filename: 'certificate.pdf', type: 'application/pdf'
+    send_data pdf.render, filename: "Certificado(#{@certificate.no_libranza}) #{@certificate.nombre} (#{Time.now.year}-#{Time.now.month}-#{Time.now.day}).pdf", type: 'application/pdf'
   end
 
   # GET /certificates/new
@@ -78,6 +78,6 @@ class CertificatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:nombre, :cedula, :pagaduria, :no_libranza, :saldo_letras, :saldo_numeros, :cuota_letras, :cuota_numeros, :fecha_vencimiento)
+      params.require(:certificate).permit(:nombre, :cedula, :pagaduria, :no_libranza, :saldo_letras, :saldo_numeros, :cuota_letras, :cuota_numeros, :fecha_vencimiento, :clase_cooperativa)
     end
 end

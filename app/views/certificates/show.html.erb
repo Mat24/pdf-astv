@@ -45,6 +45,11 @@
   <%= @certificate.fecha_vencimiento %>
 </p>
 
+<p>
+  <strong>Empresa asociada</strong>
+  <%= @certificate.clase_cooperativa %>
+</p>
+
 <%= link_to 'PDF', pdf_report_path(@certificate)%>
 <%= link_to 'Edit', edit_certificate_path(@certificate) %> |
 <%= link_to 'Back', certificates_path %>

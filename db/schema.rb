@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221010221) do
+ActiveRecord::Schema.define(version: 20160112014954) do
 
   create_table "certificates", force: :cascade do |t|
     t.string   "nombre"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151221010221) do
     t.date     "fecha_vencimiento"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "clase_cooperativa"
   end
 
 end

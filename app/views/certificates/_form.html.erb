@@ -46,6 +46,13 @@
   <div class="field">
     <%= f.label :fecha_vencimiento %><br>
     <%= f.date_select :fecha_vencimiento %>
+
+  </div>
+  <div class="field">
+    <%= f.radio_button :clase_cooperativa, 'cooperas', :checked => true %>
+    <%= label :clase_cooperativa_cooperas, 'Cooperas' %>
+    <%= f.radio_button :clase_cooperativa, 'astv' %>
+    <%= label :clase_cooperativa_astv, 'Astv' %>
   </div>
   <div class="actions">
     <%= f.submit %>
